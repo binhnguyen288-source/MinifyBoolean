@@ -16,17 +16,17 @@ function init(n) {
         const headtr = document.createElement('tr');
         for (let i = 0; i < n; ++i) {
             const headtd = document.createElement('td');
-            headtd.innerText = variables[i];
+            headtd.innerText = `\\(${variables[i]}\\)`;
             headtr.appendChild(headtd);
         }
         {
             const headtd = document.createElement('td');
-            headtd.innerText = 'True';
+            headtd.innerText = '\\(\\text{True}\\)';
             headtr.appendChild(headtd);
         }
         {
             const headtd = document.createElement('td');
-            headtd.innerText = `Don't care`;
+            headtd.innerText = `\\(\\text{Don't care}\\)`;
             headtr.appendChild(headtd);
         }
         head.appendChild(headtr);
@@ -40,7 +40,7 @@ function init(n) {
 
             for (let j = 0; j < n; ++j) {
                 const bodytd = document.createElement('td');
-                bodytd.innerText = (i >> (n - j - 1) & 1).toString();
+                bodytd.innerText = `\\(${(i >> (n - j - 1) & 1)}\\)`.toString();
                 bodytr.appendChild(bodytd);
             }
             {
@@ -64,6 +64,7 @@ function init(n) {
             body.appendChild(bodytr);
         }
     }
+    MathJax.typeset();
 
 }
 
